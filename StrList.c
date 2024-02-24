@@ -19,7 +19,7 @@ typedef struct _StrList {
 // Node implementation:
 
 Node* Node_alloc(char* str, Node* next) {
-    Node* p = (Node*)malloc(sizeof(Node));  // Actually allocating memory for 2 pointers (pointer of char and pointer to Node).
+    Node* p = (Node*)malloc(sizeof(Node));  //allocating memory for 2 pointers (pointer of char and pointer to Node).
     p->_data = str;
     p->_next = next;
     return p;
@@ -32,7 +32,6 @@ void Node_free(Node* node) {
     free(node);
 }
 
-// List implementation
 // List implementation
 StrList* StrList_alloc(){
     StrList* list = (StrList*)malloc(sizeof(StrList));
@@ -109,7 +108,7 @@ void StrList_print(const StrList* StrList){
         return;
     }
     Node* curr = StrList->_head;
-	for(size_t i=0; i<StrList->_size; i++){
+	for(int i=0; i<StrList->_size; i++){
 		if(curr->_data != NULL){
 			printf("%s", curr->_data);
 			if(i < (StrList->_size)-1){
@@ -127,7 +126,6 @@ void StrList_printAt(const StrList* Strlist, int index) {
     }
 
     if (index < 0 || index >= StrList_size(Strlist)) {
-        printf("Invalid index\n");
         return;
     }
 
@@ -277,6 +275,7 @@ void StrList_reverse( StrList* StrList){
     // Update the head of the list
     StrList->_head = prev;
 }
+// in this method we use selction sort
 void StrList_sort( StrList* StrList) {
     if (StrList==NULL || StrList->_size <= 1) {
         return; // No need to sort
