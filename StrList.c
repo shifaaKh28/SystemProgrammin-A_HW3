@@ -19,7 +19,7 @@ typedef struct _StrList {
 // Node implementation:
 
 Node* Node_alloc(char* str, Node* next) {
-    Node* p = (Node*)malloc(sizeof(Node));  //allocating memory for 2 pointers (pointer of char and pointer to Node).
+    Node* p = (Node*)malloc(sizeof(Node));
     p->_data = str;
     p->_next = next;
     return p;
@@ -48,6 +48,7 @@ void StrList_free(StrList* StrList) {
             Node* temp = node;
             node = node->_next;
             free(temp->_data);
+            free(temp);
         }
         free(StrList);
     }
