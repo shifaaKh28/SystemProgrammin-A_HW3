@@ -90,8 +90,10 @@ int main(){
                 StrList_reverse(list);
                 break;
             case 11:
-                StrList_free(list);
-                return 0;
+               size_t size = StrList_size(list);
+            for(size_t i=0; i<size; i++){
+                StrList_removeAt(list, 0);
+	        }
             case 12:
                 StrList_sort(list);
                 break;
